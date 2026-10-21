@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "god_potion:item/god_potion",
+        "layer1": "god_potion:item/god_potion_bottle"
+    }
+}

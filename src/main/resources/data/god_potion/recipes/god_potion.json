@@ -1,0 +1,14 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        " S ",
+        "DBD",
+        " D "
+    ],
+    "key": {
+        "B": { "item": "glass_bottle" },
+        "D": { "item": "netherite_ingot" },
+        "S": { "item": "netherite_scrap" }
+    },
+    "result": { "item": "god_potion:god_potion_bottle" }
+}
