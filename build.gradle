@@ -1,0 +1,45 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.140'
+}
+
+group = mod_group_id
+version = mod_version
+base.archivesName = mod_name+"-NeoForge-"+minecraft_version
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+sourceSets {
+    main {
+        java.setSrcDirs(["src/${minecraft_version}/java"])
+    }
+    test {
+        java.setSrcDirs([])
+        resources.setSrcDirs([])
+    }
+}
+
+neoForge {
+    version = neo_version
+
+    runs {
+        client { client() }
+
+        server { server() }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            jvmArgument '-Dmixin.env.disableRefMap=true'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+processResources.filesMatching("META-INF/neoforge.mods.toml") {expand project.properties as Map}
